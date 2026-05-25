@@ -1,0 +1,11 @@
+{
+  "name": "azure-functions-hr-saas",
+  "version": "1.0.0",
+  "description": "Azure Functions — Calculadora de Salário (RH SaaS)",
+  "scripts": {
+    "start": "func start"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

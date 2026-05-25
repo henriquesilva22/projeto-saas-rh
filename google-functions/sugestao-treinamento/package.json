@@ -1,0 +1,10 @@
+{
+  "name": "gcp-sugestao-treinamento",
+  "version": "1.0.0",
+  "description": "Google Cloud Function — Sugestão de Treinamento (RH SaaS)",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {}
+}

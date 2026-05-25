@@ -1,0 +1,25 @@
+# Claude Code
+.claude/
+
+# Arquivos temporários / build
+*.zip
+*.tar.gz
+node_modules/
+.env
+.env.local
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.user
+
+# PDF da atividade (não necessário no repo)
+*.pdf
