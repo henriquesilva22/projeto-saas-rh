@@ -417,7 +417,6 @@ button#btnAnalisar:disabled { opacity: 0.5; cursor: not-allowed; }
 }
 
 /* ─── Latency table ────────────────────────────────────────── */
-.latency-card { }
 .latency-table {
   width: 100%;
   border-collapse: collapse;

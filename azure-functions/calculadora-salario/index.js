@@ -49,20 +49,25 @@ module.exports = async function (context, req) {
       faixa_anterior = faixa.limite;
     }
 
-    // ─── IRRF 2024 ────────────────────────────────────────────────────────────
+    // ─── IRRF 2025 (tabela vigente) ───────────────────────────────────────────
+    // Até R$ 2.428,80          → Isento       dedução R$ 0,00
+    // R$ 2.428,81 – R$ 2.826,65 → 7,5%        dedução R$ 182,16
+    // R$ 2.826,66 – R$ 3.751,05 → 15%         dedução R$ 394,16
+    // R$ 3.751,06 – R$ 4.664,68 → 22,5%       dedução R$ 675,49
+    // Acima de R$ 4.664,68     → 27,5%        dedução R$ 908,73
     const base_irrf = salario_bruto - inss;
     let irrf = 0;
 
-    if (base_irrf <= 2259.20) {
+    if (base_irrf <= 2428.80) {
       irrf = 0;
     } else if (base_irrf <= 2826.65) {
-      irrf = base_irrf * 0.075 - 169.44;
+      irrf = base_irrf * 0.075 - 182.16;
     } else if (base_irrf <= 3751.05) {
-      irrf = base_irrf * 0.15 - 381.44;
+      irrf = base_irrf * 0.15 - 394.16;
     } else if (base_irrf <= 4664.68) {
-      irrf = base_irrf * 0.225 - 662.77;
+      irrf = base_irrf * 0.225 - 675.49;
     } else {
-      irrf = base_irrf * 0.275 - 896.0;
+      irrf = base_irrf * 0.275 - 908.73;
     }
 
     irrf = Math.max(0, irrf);
