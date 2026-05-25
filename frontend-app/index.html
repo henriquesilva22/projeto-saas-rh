@@ -28,39 +28,39 @@
       <h2 class="card-title">📋 Dados do Candidato</h2>
 
       <div class="form-grid">
-        <!-- Currículo -->
+        <!-- Curriculo -->
         <div class="form-group full-width">
-          <label for="curriculo">Texto do Currículo</label>
+          <label for="curriculo">Texto do Curriculo</label>
           <textarea
             id="curriculo"
             rows="6"
-            placeholder="Cole aqui o texto completo do currículo do candidato..."
-          >Profissional com 5 anos de experiência em desenvolvimento de software. Habilidades em JavaScript, Node.js, Python, SQL e gestão de projetos. Experiência com metodologias ágeis (Scrum e Kanban), liderança técnica de equipes e comunicação corporativa. Certificação AWS Cloud Practitioner. Conhecimento em Excel avançado e Power BI.</textarea>
+            placeholder="Cole aqui o texto completo do curriculo do candidato..."
+          >Profissional com 5 anos de experiencia em desenvolvimento de software. Habilidades em JavaScript, Node.js, Python, SQL e gestao de projetos. Experiencia com metodologias ageis (Scrum e Kanban), lideranca tecnica de equipes e comunicacao corporativa. Certificacao AWS Cloud Practitioner. Conhecimento em Excel avancado e Power BI.</textarea>
         </div>
 
         <!-- Palavras-chave -->
         <div class="form-group full-width">
           <div class="kw-label-row">
             <label for="palavras">
-              Palavras-chave para análise
-              <span class="hint">(separadas por vírgula)</span>
+              Palavras-chave para analise
+              <span class="hint">(separadas por virgula)</span>
             </label>
-            <button type="button" class="btn-extract" onclick="extrairPalavrasChave()" title="Extrair automaticamente do currículo">
-              ✨ Extrair do currículo
+            <button type="button" class="btn-extract" onclick="extrairPalavrasChave()" title="Extrair automaticamente do curriculo">
+              ✨ Extrair do curriculo
             </button>
           </div>
           <input
             id="palavras"
             type="text"
-            value="javascript, node.js, python, sql, gestão, scrum, liderança, aws, excel, power bi"
-            placeholder="javascript, node.js, sql, gestão..."
+            value="javascript, node.js, python, sql, gestao, scrum, lideranca, aws, excel, power bi"
+            placeholder="javascript, node.js, sql, gestao..."
           />
           <div id="kwSugestoes" class="kw-sugestoes hidden"></div>
         </div>
 
-        <!-- Salário -->
+        <!-- Salario -->
         <div class="form-group">
-          <label for="salario">Salário Bruto (R$)</label>
+          <label for="salario">Salario Bruto (R$)</label>
           <input
             id="salario"
             type="number"
@@ -71,7 +71,7 @@
           />
         </div>
 
-        <!-- Botão -->
+        <!-- Botao -->
         <div class="form-group btn-group">
           <button id="btnAnalisar" onclick="analisarCandidato()">
             <span class="btn-icon">🚀</span>
@@ -94,7 +94,7 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" height="22" />
           </span>
           <div>
-            <div class="rc-title">Validador de Currículo</div>
+            <div class="rc-title">Validador de Curriculo</div>
             <div class="rc-subtitle">AWS Lambda + API Gateway</div>
           </div>
           <span class="lat-badge" id="latBadgeAWS" style="display:none"></span>
@@ -110,7 +110,7 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg" alt="Azure" height="22" />
           </span>
           <div>
-            <div class="rc-title">Calculadora de Salário</div>
+            <div class="rc-title">Calculadora de Salario</div>
             <div class="rc-subtitle">Azure Functions (HTTP Trigger)</div>
           </div>
           <span class="lat-badge" id="latBadgeAzure" style="display:none"></span>
@@ -126,7 +126,7 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg" alt="GCP" height="22" />
           </span>
           <div>
-            <div class="rc-title">Sugestão de Treinamento</div>
+            <div class="rc-title">Sugestao de Treinamento</div>
             <div class="rc-subtitle">Google Cloud Functions</div>
           </div>
           <span class="lat-badge" id="latBadgeGCP" style="display:none"></span>
@@ -137,15 +137,15 @@
 
     </section>
 
-    <!-- ─── LATÊNCIA ───────────────────────────────────────── -->
+    <!-- ─── LATENCIA ───────────────────────────────────────── -->
     <section class="card latency-card hidden" id="latencyCard">
-      <h2 class="card-title">📊 Métricas de Latência</h2>
+      <h2 class="card-title">📊 Metricas de Latencia</h2>
       <table class="latency-table">
         <thead>
           <tr>
             <th>Provedor</th>
-            <th>Serviço</th>
-            <th>Latência</th>
+            <th>Servico</th>
+            <th>Latencia</th>
             <th>Status HTTP</th>
           </tr>
         </thead>
@@ -155,7 +155,7 @@
   </main>
 
   <footer class="footer">
-    <p>Grupo B — RH SaaS Multicloud &nbsp;|&nbsp; FATEC &nbsp;|&nbsp; Implementação de Micro-Serviços (FaaS / Serverless)</p>
+    <p>Grupo B — RH SaaS Multicloud &nbsp;|&nbsp; FATEC &nbsp;|&nbsp; Implementacao de Micro-Servicos (FaaS / Serverless)</p>
   </footer>
 
   <script src="script.js"></script>

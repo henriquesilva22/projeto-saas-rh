@@ -272,7 +272,7 @@ function renderAWS(data) {
 function renderAzure(data) {
   const bruto    = data.salario_bruto      ?? data.salarioBruto      ?? data.grossSalary   ?? data.bruto   ?? 0;
   const inss     = data.inss               ?? data.descontoINSS      ?? data.inssDiscount  ?? 0;
-  const irrf     = data.irrf               ?? data.descontoIRRF      ?? data.irrfDiscount  ?? data.ir      ?? 0;
+  const irrf     = data.irrf               ?? data.descontoIRRF      ?? data.descontoIR    ?? data.irrfDiscount  ?? data.ir      ?? 0;
   const liquido  = data.salario_liquido    ?? data.salarioLiquido    ?? data.netSalary     ?? data.liquido ?? 0;
   const descontos = data.descontos_totais  ?? data.totalDescontos    ?? data.totalDiscounts ?? (inss + irrf);
   const aliquota = data.aliquota_efetiva_pct ?? data.aliquotaEfetiva ?? (bruto > 0 ? +((descontos / bruto) * 100).toFixed(1) : 0);
@@ -449,7 +449,9 @@ async function analisarCandidato() {
 
   if (!curriculo) { alert('Preencha o texto do currículo.'); return; }
 
-  const palavras_chave = palavrasRaw ? palavrasRaw.split(',').map(p => p.trim()).filter(Boolean) : [];
+  const palavras_chave = palavrasRaw
+    ? palavrasRaw.split(/[\n,;]+/).map(p => p.trim()).filter(Boolean)
+    : [];
   const salario_bruto  = parseFloat(salarioRaw) || 0;
 
   analisando = true;

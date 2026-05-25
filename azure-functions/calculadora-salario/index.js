@@ -49,25 +49,33 @@ module.exports = async function (context, req) {
       faixa_anterior = faixa.limite;
     }
 
-    // ─── IRRF 2025 (tabela vigente) ───────────────────────────────────────────
-    // Até R$ 2.428,80          → Isento       dedução R$ 0,00
-    // R$ 2.428,81 – R$ 2.826,65 → 7,5%        dedução R$ 182,16
-    // R$ 2.826,66 – R$ 3.751,05 → 15%         dedução R$ 394,16
-    // R$ 3.751,06 – R$ 4.664,68 → 22,5%       dedução R$ 675,49
-    // Acima de R$ 4.664,68     → 27,5%        dedução R$ 908,73
+    // ─── IRRF 2027 (regras informadas) ────────────────────────────────────────
+    // Isencao total: renda mensal ate R$ 5.000
+    // Desconto parcial: renda mensal de R$ 5.000,01 ate R$ 7.350 (progressivo)
+    // Tributacao minima: 10% sobre renda anual que exceder R$ 600 mil (R$ 50 mil/m)
+    // Lucros/dividendos: 10% na fonte sobre valores mensais acima de R$ 50 mil (se informado)
     const base_irrf = salario_bruto - inss;
     let irrf = 0;
 
-    if (base_irrf <= 2428.80) {
+    if (base_irrf <= 5000) {
       irrf = 0;
-    } else if (base_irrf <= 2826.65) {
-      irrf = base_irrf * 0.075 - 182.16;
-    } else if (base_irrf <= 3751.05) {
-      irrf = base_irrf * 0.15 - 394.16;
-    } else if (base_irrf <= 4664.68) {
-      irrf = base_irrf * 0.225 - 675.49;
+    } else if (base_irrf <= 7350) {
+      // Desconto progressivo: fator linear de 0 a 1 entre 5.000 e 7.350
+      const fator = (base_irrf - 5000) / (7350 - 5000);
+      irrf = base_irrf * 0.275 * fator;
     } else {
-      irrf = base_irrf * 0.275 - 908.73;
+      irrf = base_irrf * 0.275;
+    }
+
+    // Tributacao minima anual (aplicada mensalmente no excedente de 50 mil)
+    if (salario_bruto > 50000) {
+      irrf += (salario_bruto - 50000) * 0.10;
+    }
+
+    // Lucros e dividendos (opcional no payload)
+    const dividendos = parseFloat(body.dividendos_mensais);
+    if (!isNaN(dividendos) && dividendos > 50000) {
+      irrf += (dividendos - 50000) * 0.10;
     }
 
     irrf = Math.max(0, irrf);
