@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RH SaaS — Plataforma Multicloud</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">☁️</span>
+        <span class="logo-text">RH <strong>SaaS</strong></span>
+        <span class="logo-sub">Plataforma Multicloud</span>
+      </div>
+      <div class="cloud-badges">
+        <span class="badge aws">AWS Lambda</span>
+        <span class="badge azure">Azure Functions</span>
+        <span class="badge gcp">Google Cloud</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- ─── INPUTS ─────────────────────────────────────────── -->
+    <section class="card input-card">
+      <h2 class="card-title">📋 Dados do Candidato</h2>
+
+      <div class="form-grid">
+        <!-- Currículo -->
+        <div class="form-group full-width">
+          <label for="curriculo">Texto do Currículo</label>
+          <textarea
+            id="curriculo"
+            rows="6"
+            placeholder="Cole aqui o texto completo do currículo do candidato..."
+          >Profissional com 5 anos de experiência em desenvolvimento de software. Habilidades em JavaScript, Node.js, Python, SQL e gestão de projetos. Experiência com metodologias ágeis (Scrum e Kanban), liderança técnica de equipes e comunicação corporativa. Certificação AWS Cloud Practitioner. Conhecimento em Excel avançado e Power BI.</textarea>
+        </div>
+
+        <!-- Palavras-chave -->
+        <div class="form-group full-width">
+          <label for="palavras">
+            Palavras-chave para análise
+            <span class="hint">(separadas por vírgula)</span>
+          </label>
+          <input
+            id="palavras"
+            type="text"
+            value="javascript, node.js, python, sql, gestão, scrum, liderança, aws, excel, power bi"
+            placeholder="javascript, node.js, sql, gestão..."
+          />
+        </div>
+
+        <!-- Salário -->
+        <div class="form-group">
+          <label for="salario">Salário Bruto (R$)</label>
+          <input
+            id="salario"
+            type="number"
+            min="1320"
+            step="100"
+            value="5000"
+            placeholder="Ex: 5000"
+          />
+        </div>
+
+        <!-- Botão -->
+        <div class="form-group btn-group">
+          <button id="btnAnalisar" onclick="analisarCandidato()">
+            <span class="btn-icon">🚀</span>
+            Analisar Candidato
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── STATUS GERAL ───────────────────────────────────── -->
+    <div id="statusGeral" class="status-geral hidden"></div>
+
+    <!-- ─── RESULTADOS ────────────────────────────────────── -->
+    <section class="results-grid" id="resultsGrid">
+
+      <!-- Card AWS -->
+      <div class="result-card" id="cardAWS">
+        <div class="rc-header aws-header">
+          <span class="rc-cloud-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" height="22" />
+          </span>
+          <div>
+            <div class="rc-title">Validador de Currículo</div>
+            <div class="rc-subtitle">AWS Lambda + API Gateway</div>
+          </div>
+          <span class="rc-status" id="statusAWS">⏳</span>
+        </div>
+        <div class="rc-body" id="bodyAWS">
+          <p class="rc-placeholder">Aguardando análise...</p>
+        </div>
+      </div>
+
+      <!-- Card Azure -->
+      <div class="result-card" id="cardAzure">
+        <div class="rc-header azure-header">
+          <span class="rc-cloud-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg" alt="Azure" height="22" />
+          </span>
+          <div>
+            <div class="rc-title">Calculadora de Salário</div>
+            <div class="rc-subtitle">Azure Functions (HTTP Trigger)</div>
+          </div>
+          <span class="rc-status" id="statusAzure">⏳</span>
+        </div>
+        <div class="rc-body" id="bodyAzure">
+          <p class="rc-placeholder">Aguardando análise...</p>
+        </div>
+      </div>
+
+      <!-- Card GCP -->
+      <div class="result-card" id="cardGCP">
+        <div class="rc-header gcp-header">
+          <span class="rc-cloud-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg" alt="GCP" height="22" />
+          </span>
+          <div>
+            <div class="rc-title">Sugestão de Treinamento</div>
+            <div class="rc-subtitle">Google Cloud Functions</div>
+          </div>
+          <span class="rc-status" id="statusGCP">⏳</span>
+        </div>
+        <div class="rc-body" id="bodyGCP">
+          <p class="rc-placeholder">Aguardando análise...</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ─── LATÊNCIA ───────────────────────────────────────── -->
+    <section class="card latency-card hidden" id="latencyCard">
+      <h2 class="card-title">📊 Métricas de Latência</h2>
+      <table class="latency-table">
+        <thead>
+          <tr>
+            <th>Provedor</th>
+            <th>Serviço</th>
+            <th>Latência</th>
+            <th>Status HTTP</th>
+          </tr>
+        </thead>
+        <tbody id="latencyBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Grupo B — RH SaaS Multicloud &nbsp;|&nbsp; FATEC &nbsp;|&nbsp; Implementação de Micro-Serviços (FaaS / Serverless)</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
